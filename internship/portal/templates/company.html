@@ -1,0 +1,462 @@
+
+
+<!doctype html>
+{%load static%}
+<html lang="en">
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>
+      Esp@rse M@trix/Blog</title>
+  <link href="https//fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{%static 'css/style-starter.css'%}">
+</head>
+<style>
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+</style>
+<body>
+  <!--header-->
+  <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark stroke">
+        <h1><a class="navbar-brand" href="{% url 'index' %}">
+<img src="{%static 'images/logo.png'%}" height="50px">       </a></h1>
+        <!-- if logo is image enable this
+      <a class="navbar-brand" href="#index.html">
+          <img src="image-path" alt="Your logo" title="Your logo" style="height:35px;" />
+      </a> -->
+        <button class="navbar-toggler  collapsed bg-gradient" type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'intern'%}">Add Internship </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Partnership</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Courses</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'blog' %}">Blogs</a>
+            </li>
+
+            <li class="top-quote ml-lg-4 mt-lg-0 mt-3">
+              <a  href="{%url 'logout'%}" class="btn btn-style btn-primary">Logout</a>
+
+
+            </li>
+
+             <li class="top-quote ml-lg-4 mt-lg-0 mt-3">
+              <a  class="btn btn-style  btn-primary">Profile</a>
+                  <div class="dropdown-content">
+
+            </li>
+              <li class="nav-item">
+              <a class="nav-link" >&nbsp
+                  {% if request.session.email%}
+                  <b style="text-color:black">{{ request.session.email}}</b>
+                  {%endif%}</a>
+            </li>
+
+          </ul>
+        </div>
+        <!-- toggle switch for light and dark theme -->
+
+
+      </nav>
+    </div>
+  </header>
+  {% block content%}
+  {%endblock%}
+
+  <!--/header-->
+  <!-- main-slider -->
+  <section class="w3l-main-slider" id="home">
+    <div class="companies20-content">
+
+        <div class="item">
+          <li>
+            <div class="slider-info banner-view bg bg2">
+              <div class="banner-info">
+                <div class="container">
+                  <div class="banner-info-bg">
+                    <h6>JOIN US FOR YOUR PERSONAL GROWTH WITH JOB OPPORTNITIES</h6>
+
+                    <a class="btn btn-style btn-primary mt-sm-5 mt-4 mr-2" href="{% url 'index'%}"> About Us</a>
+                    <a class="btn btn-style btn-white mt-sm-5 mt-4" href="contact.html"> Contact Us</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+
+
+
+  </section>
+  <!-- /main-slider -->
+  <!--/grids-->
+  <section class="w3l-grids-3 py-5" id="about">
+    <div class="container py-md-5 py-3">
+      <div class="row bottom-ab-grids align-items-center">
+
+        <div class="col-lg-6 bottom-ab-left">
+          <h6 class="sub-titlehny">About Our Company</h6>
+          <h3 class="hny-title">Digitally Yours. Trusted Partners
+ </h3>
+          <p class="my-3"> The company was established in the year 2019, with the goal to provide high quality cost effective services to the businesses. We desire to grow on every day to become the most trusted partner for our clients delivering service. Today we have a team of of experienced and skillfull team of professional’s software engineers, technology enthusiasts with creative designers.
+            Within a short time span, we have successfully delivered over 50+ projects to clients worldwide.</p>
+        </div>
+        <div class="col-lg-6 bottom-ab-right mt-lg-0 mt-3 pl-lg-4">
+          <p>eSparse Matrix Solutions Private Limited is a software company that includes Enterprise Software development, Website designing and development, Mobile application development, Digital marketing.
+
+
+</p>
+          <p class="mt-3"> At eSparse Matrix Solutions Private Limited, We wil provide a one-stop solutions for all customer IT service needs, we will take care of all your needs right from Strategic concept development, Business analysis, Software development to online marketing all in one place. Once you join with ESparse Matrix Solutions, you will never have to go anywhere else again.</p>
+        </div>
+
+      </div>
+      <div class="row bottom_grids pt-md-3 text-left">
+        <div class="col-lg-3 col-md-6 mt-5">
+          <div class="grid-block">
+
+              <span class="fa fa-cubes" aria-hidden="true"></span>
+              <h5 class="my-3">START LEARNING</h5>
+
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-5">
+          <div class="grid-block">
+
+              <span class="fa fa-building-o" aria-hidden="true"></span>
+              <h5 class="my-3">JOIN INTERNSHIP</h5>
+
+
+          </div>
+        </div>
+        <div class="col-lg-3 col-md-6 mt-5">
+          <div class="grid-block">
+
+              <span class="fa fa-podcast" aria-hidden="true"></span>
+              <h5 class="my-3">BEGIN CAREER
+             </h5>
+
+            </a>
+          </div>
+        </div>
+          <div class="col-lg-3 col-md-6 mt-4">
+          <div class="grid-block">
+
+              <span class="fa fa-podcast" aria-hidden="true"></span>
+              <h5 class="my-3">BECOME EMPLOYER
+             </h5>
+
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--//grids-->
+  <!--/w3l-faq-block-->
+  <!--//w3l-faq-block-->
+
+  </section>
+    <!--//projects-->
+  <!-- stats -->
+<section class="w3l-stats py-lg-5 py-5" id="stats">
+  <div class="gallery-inner container py-md-5 py-3">
+      <div class="row stats-con">
+          <div class="col-lg-3 col-6 stats_info counter_grid">
+              <span class="fa fa-laptop"></span>
+              <p class="counter">100</p>
+              <h4>Internship joined</h4>
+          </div>
+          <div class="col-lg-3 col-6 stats_info counter_grid1">
+              <span class="fa fa-users"></span>
+              <p class="counter">100</p>
+              <h4>Courses Completed</h4>
+          </div>
+          <div class="col-lg-3 col-6 stats_info counter_grid mt-lg-0 mt-5">
+              <span class="fa fa-trophy"></span>
+              <p class="counter">50</p>
+              <h4>Job Provided</h4>
+          </div>
+          <div class="col-lg-3 col-6 stats_info counter_grid2 mt-lg-0 mt-5">
+              <span class="fa fa-smile-o"></span>
+              <p class="counter">2</p>
+              <h4>Years in Operation</h4>
+          </div>
+      </div>
+  </div>
+</section>
+<!-- //stats -->
+  <!--/w3l-faq-block-->
+  <!--//w3l-faq-block-->
+  <!--/w3l-bottom-->
+  <!--//w3l-bottom-->
+   <!--//w3l-footer-29-main-->
+  <section class="w3l-footer-29-main">
+    <div class="footer-29 py-5">
+      <div class="container py-lg-4">
+        <div class="row footer-top-29">
+          <div class="footer-list-29 col-lg-4">
+            <h6 class="footer-title-29">About Company</h6>
+            <p>Esparse Matrix Solution Private Limited is a software development company based in India that serves clients all over the world. We concentrated on providing innovative resources to help clients expand.
+
+    </p>
+
+          </div>
+
+          <div class="col-lg-2 col-md-6 col-sm-4 footer-list-29 footer-2 mt-lg-0 mt-5">
+
+            <ul>
+              <h6 class="footer-title-29">Useful Links</h6>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="about.html">About</a></li>
+              <li><a href="services.html">Internship</a></li>
+              <li><a href="#"> Partnership</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-3 col-md-6 footer-list-29 footer-3 mt-lg-0 mt-5">
+
+            <ul>
+              <h6 class="footer-title-29">Services</h6>
+              <li><a href="#team">Web Development</a></li>
+              <li><a href="#insta">App Development</a></li>
+              <li><a href="#tiling">Software Development </a></li>
+              <li><a href="#careers">ERP Software</a></li>
+              <li><a href="#help">CRM Software</a></li>
+            </ul>
+
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-8 footer-list-29 footer-1 mt-lg-0 mt-5">
+            <h6 class="footer-title-29">Contact Us</h6>
+            <ul>
+              <li>
+                <p><span class="fa fa-map-marker"></span>
+                 133/1, Spectrum Building, Gurudwara Colony, Akurdi,
+Pune-411033</p>
+              </li>
+              <li><a href="tel:+7-800-999-800"><span class="fa fa-phone"></span> (+91) 8806668550</a></li>
+
+              <li><a href="mailto:industrie@mail.com" class="mail"><span class="fa fa-envelope-open-o"></span>
+                 sparsematrix195@gmail.com</a></li>
+            </ul>
+          </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="w3l-footer-29-main w3l-copyright">
+    <div class="container">
+      <div class="bottom-copies">
+        <p class="copy-footer-29 text-center">  eSparse Matrix Solutions Pvt Ltd.   All Rights Reserved. 2021</p>
+      </div>
+    </div>
+
+    <!-- move top -->
+    <button onclick="topFunction()" id="movetop" title="Go to top">
+      <span class="fa fa-angle-up"></span>
+    </button>
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+      window.onscroll = function () {
+        scrollFunction()
+      };
+
+      function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+          document.getElementById("movetop").style.display = "block";
+        } else {
+          document.getElementById("movetop").style.display = "none";
+        }
+      }
+
+      // When the user clicks on the button, scroll to the top of the document
+      function topFunction() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+      }
+    </script>
+    <!-- /move top -->
+  </section>
+  <!-- Template JavaScript -->
+  <script src="assets/js/jquery-3.3.1.min.js"></script>
+
+  <!-- script for testimonials -->
+  <script>
+    $(document).ready(function () {
+      $('.owl-testimonial').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: true,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          480: {
+            items: 1,
+            nav: false
+          },
+          667: {
+            items: 1,
+            nav: true
+          },
+          1000: {
+            items: 1,
+            nav: true
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script for testimonials -->
+
+  <script src="assets/js/theme-change.js"></script>
+
+  <!-- js for portfolio lightbox -->
+  <!-- libhtbox -->
+  <script src="{%static 'js/lightbox-plus-jquery.min.js'%}"></script>
+  <!-- libhtbox -->
+  <script src="{%static 'js/owl.carousel.js'%}"></script>
+  <!-- script for banner slider-->
+  <script>
+    $(document).ready(function () {
+      $('.owl-one').owlCarousel({
+        loop: true,
+        margin: 0,
+        nav: false,
+        responsiveClass: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplaySpeed: 1000,
+        autoplayHoverPause: false,
+        responsive: {
+          0: {
+            items: 1,
+            nav: false
+          },
+          480: {
+            items: 1,
+            nav: false
+          },
+          667: {
+            items: 1,
+            nav: true
+          },
+          1000: {
+            items: 1,
+            nav: true
+          }
+        }
+      })
+    })
+  </script>
+  <!-- //script -->
+<!-- stats number counter-->
+<script src="{%static 'js/jquery.waypoints.min.js'%}"></script>
+<script src="{%static 'js/jquery.countup.js' %}"></script>
+<script>
+  $('.counter').countUp();
+</script>
+<!-- //stats number counter -->
+
+  <!-- disable body scroll which navbar is in active -->
+  <script>
+    $(function () {
+      $('.navbar-toggler').click(function () {
+        $('body').toggleClass('noscroll');
+      })
+    });
+  </script>
+  <!-- disable body scroll which navbar is in active -->
+
+  <!--/MENU-JS-->
+  <script>
+    $(window).on("scroll", function () {
+      var scroll = $(window).scrollTop();
+
+      if (scroll >= 80) {
+        $("#site-header").addClass("nav-fixed");
+      } else {
+        $("#site-header").removeClass("nav-fixed");
+      }
+    });
+
+    //Main navigation Active Class Add Remove
+    $(".navbar-toggler").on("click", function () {
+      $("header").toggleClass("active");
+    });
+    $(document).on("ready", function () {
+      if ($(window).width() > 991) {
+        $("header").removeClass("active");
+      }
+      $(window).on("resize", function () {
+        if ($(window).width() > 991) {
+          $("header").removeClass("active");
+        }
+      });
+    });
+  </script>
+  <!--//MENU-JS-->
+
+  <script src="{%static 'js/bootstrap.min.js'%}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,549 @@
+<DOCTYPE html>
+    {%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Internship Form</title>
+          <meta name="viewport" content="width=device-width, initial-
+scale=1">
+   <link rel="stylesheet"
+href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstr
+ap.min.css">
+  <script
+src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"
+></script>
+     <link href="https//fonts.googleapis.com/css2?
+family=Barlow:ital,wght@0,300;0,600;0,700;1,400&display=swap"
+    rel="stylesheet">
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{%static 'css/style-starter.css'%}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-
+easing/1.3/jquery.easing.min.js"></script>
+  <script
+src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.
+min.js"></script>
+    <style>
+                /*custom font*/
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        /*basic reset*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            height: 100%;
+            background: lightgreen; /* fallback for old browsers */
+        }
+
+        body {
+            font-family: montserrat, arial, verdana;
+            background: transparent;
+        }
+
+        /*form styles*/
+        #msform {
+            text-align: center;
+            position: relative;
+            margin-top: 30px;
+        }
+
+        #msform fieldset {
+            background: white;
+            border: 0 none;
+            border-radius: 0px;
+            box-shadow: 0 0 15px 1px rgba(0, 0, 0, 0.4);
+            padding: 20px 30px;
+            box-sizing: border-box;
+            width: 80%;
+            margin: 0 10%;
+
+            /*stacking fieldsets above each other*/
+            position: relative;
+        }
+
+        /*Hide all except first fieldset*/
+        #msform fieldset:not(:first-of-type) {
+            display: none;
+        }
+
+        /*inputs*/
+        #msform input, #msform textarea {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            margin-bottom: 10px;
+            width: 100%;
+            box-sizing: border-box;
+            font-family: montserrat;
+            color: #2C3E50;
+            font-size: 13px;
+        }
+         #msform label {
+
+            font-family: montserrat;
+            color: #2C3E50;font-size: 13px;
+
+
+
+        }
+ #msform select {
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 0px;
+            margin-bottom: 10px;
+            width: 100%;
+            font-family: montserrat;
+            color: #2C3E50;font-size: 13px;
+            -webkit-appearance: none !important;
+
+
+
+        }
+        #msform input:focus, #msform textarea:focus {
+            -moz-box-shadow: none !important;
+            -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+            border: 1px solid #ee0979;
+            outline-width: 0;
+            transition: All 0.5s ease-in;
+            -webkit-transition: All 0.5s ease-in;
+            -moz-transition: All 0.5s ease-in;
+            -o-transition: All 0.5s ease-in;
+        }
+
+        /*buttons*/
+        #msform .action-button {
+            width: 100px;
+            background: rgb(255, 107, 0);
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 25px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+        }
+
+        #msform .action-button:hover, #msform .action-button:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px #ee0979;
+        }
+
+        #msform .action-button-previous {
+            width: 100px;
+            background: #C5C5F1;
+            font-weight: bold;
+            color: white;
+            border: 0 none;
+            border-radius: 25px;
+            cursor: pointer;
+            padding: 10px 5px;
+            margin: 10px 5px;
+        }
+
+        #msform .action-button-previous:hover, #msform .action-button-
+previous:focus {
+            box-shadow: 0 0 0 2px white, 0 0 0 3px ;
+            width:50px
+
+        }
+
+        /*headings*/
+        .fs-title {
+            font-size: 18px;
+            text-transform: uppercase;
+            color: #2C3E50;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: bold;
+        }
+
+        .fs-subtitle {
+            font-weight: normal;
+            font-size: 13px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /*progressbar*/
+        #progressbar {
+            margin-bottom: 30px;
+            overflow: hidden;
+            /*CSS counters to number the steps*/
+            counter-reset: step;
+        }
+
+        #progressbar li {
+            list-style-type: none;
+            color: white;
+            text-transform: uppercase;
+            font-size: 9px;
+            width: 33.33%;
+            float: left;
+            position: relative;
+            letter-spacing: 1px;
+        }
+
+        #progressbar li:before {
+            content: counter(step);
+            counter-increment: step;
+            width: 24px;
+            height: 24px;
+            line-height: 26px;
+            display: block;
+            font-size: 12px;
+            color: #333;
+            background: white;
+            border-radius: 25px;
+            margin: 0 auto 10px auto;
+        }
+
+        /*progressbar connectors*/
+        #progressbar li:after {
+            content: '';
+            width: 100%;
+            height: 2px;
+            background: white;
+            position: absolute;
+            left: -50%;
+            top: 9px;
+            z-index: -1; /*put it behind the numbers*/
+        }
+
+        #progressbar li:first-child:after {
+            /*connector not needed before the first step*/
+            content: none;
+        }
+
+        /*marking active/completed steps green*/
+        /*The number of the step and the connector before it = green*/
+        #progressbar li.active:before, #progressbar li.active:after {
+            background: #ee0979;
+            color: white;
+        }
+
+
+        /* Not relevant to this form */
+        .dme_link {
+            margin-top: 30px;
+            text-align: center;
+        }
+        .dme_link a {
+            background: #FFF;
+            font-weight: bold;
+            color: #ee0979;
+            border: 0 none;
+            border-radius: 25px;
+            cursor: pointer;
+            padding: 5px 25px;
+            font-size: 12px;
+        }
+
+        .dme_link a:hover, .dme_link a:focus {
+            background: #C5C5F1;
+            text-decoration: none;
+        }
+         .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 140px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the
+dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+    </style>
+</head>
+<body>
+ <header id="site-header" class="fixed-top">
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-dark stroke">
+
+
+      <a class="navbar-brand" href="(% url 'index'%}">
+          <img src="{%static 'images/logo.png'%}" style="height:50px;" />
+      </a>
+        <button class="navbar-toggler  collapsed bg-gradient"
+type="button" data-toggle="collapse"
+          data-target="#navbarTogglerDemo02" aria-
+controls="navbarTogglerDemo02" aria-expanded="false"
+          aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon fa icon-expand fa-bars"></span>
+          <span class="navbar-toggler-icon fa icon-close fa-times"></span>
+          </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mx-lg-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'index'%}">Home </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'intern'%}">Internship</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Partnership</a>
+            </li>
+
+            <li class="nav-item ">
+              <a class="nav-link" href="#">Courses</a>
+            </li>
+               <li class="nav-item ">
+              <a class="nav-link" href="{% url 'blog' %}">Blogs</a>
+            </li>
+             <div class="dropdown">
+            <li class="top-quote ml-lg-4 mt-lg-0 mt-3">
+              <a  class="btn btn-style btn-primary">LOGIN</a>
+                <div class="dropdown-content">
+    <a href="{% url 'login'%}">User </a>
+    <a href="{% url 'companylogin' %}">Company </a>
+  </div>
+              </div>
+            </li>
+              <div class="dropdown">
+             <li class="top-quote ml-lg-4 mt-lg-0 mt-3">
+              <a  class="btn btn-style  btn-primary">SIGN UP</a>
+                  <div class="dropdown-content">
+    <a href="{% url 'usersignup' %}">User </a>
+    <a href="{% url 'companysignup' %}">Company </a>
+  </div>
+            </li>
+          </ul>
+        </div>
+        <!-- toggle switch for light and dark theme -->
+
+        <div class="mobile-position">
+          <nav class="navigation">
+            <div class="theme-switch-wrapper">
+              <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox">
+                <div class="mode-container py-1">
+                  <i class="gg-sun"></i>
+                  <i class="gg-moon"></i>
+                </div>
+              </label>
+            </div>
+          </nav>
+        </div>
+        <!-- //toggle switch for light and dark theme -->
+      </nav>
+    </div>
+  </header>
+
+  <!--/header-->
+
+<div class="inner-banner">
+</div>
+<section class="w3l-breadcrumb">
+    <div class="container">
+        <ul class="breadcrumbs-custom-path">
+            <li><a href="#url">Home</a></li>
+            <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Interners</li>
+        </ul>
+    </div>
+</section>
+ {% if messages %}
+              <ul >
+    {% for message in messages %}
+    <li class="p-2 mb-2 bg-success text-white">{{message}}</li>
+    {% endfor %}
+              </ul>
+              {% endif %}
+<div class="row">
+    <div class="col-md-6 col-md-offset-3">
+        <form id="msform" action="{% url 'apply' %}" method="POST">
+            {% csrf_token %}
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Personal Details</li>
+                <li>Education</li>
+                <li>Experience</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+                <input type="text" name="fname" placeholder="First Name"
+required/>
+                <input type="text" name="lname" placeholder="Last Name"
+required/>
+                <input type="text" name="city" placeholder="City" required/>
+                <input type="text" name="phone" placeholder="Phone" required/>
+                <input type="email" name="email" placeholder="Email" required/>
+
+
+                <input type="button" name="next" class="next action-button"
+value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Education and Social Links</h2>
+                <h3 class="fs-subtitle">Write About Your Education</h3>
+                <input type="text" name="graduation" required placeholder=" Add
+Graduation(College Name and Marks)"/>
+                <input type="text" name="highersecondary" placeholder="Add
+Higher Secondary Education"/>
+
+                <input type="text" name="secondary" required placeholder="Add
+Secondary Education"/>
+                <input type="text" name="skill" required placeholder="Add
+Skills"/>
+                <input type="text" name="link" required placeholder="Add
+Linkedin Link"/>
+                <input type="text" name="link2" required placeholder="Add
+Another Links"/>
+
+                <input type="button" name="previous" class="previous action-
+button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button"
+value="Next"/>
+            </fieldset>
+            <fieldset>
+                <h2 class="fs-title">Jobs And Experience</h2>
+                <h3 class="fs-subtitle">Fill in your credentials</h3>
+                <input type="text" name="job" required placeholder="Add Jobs"/>
+                <input type="text" name="internship" required placeholder="Add
+Internship"/>
+                <input type="text" name="tranning" required placeholder="Add
+Tranning and Courses"/>
+                <input type="text" name="details" required placeholder="Add
+Project and their details"/>
+                <input type="text" name="field" required placeholder="Which
+field are you willing to work in?(internship/Tranning/Job)"/>
+
+                <input type="text" name="filed" required placeholder="Which field
+are you willing to work in?"/>
+               <label for="myfile">Upload Your Resume</label>
+<input type="file" id="myfile" name="myfile" required
+placeholder="Upload Your Resume">
+
+                <input type="button" name="previous" class="previous action-
+button-previous" value="Previous"/>
+ <input type="submit" name="submit" class="submit action-button"
+value="Submit"/>
+            </fieldset>
+        </form>
+    </div>
+</div>
+<div class="row">
+        <div class="col-lg-12">
+            <div class="form-group">
+               {% if messages %}
+              <ul >
+    {% for message in messages %}
+    <li class="p-2 mb-2 bg-success text-white"><h4>{{message}}</h4></li>
+    {% endfor %}
+              </ul>
+              {% endif %}
+            </div>
+        </div>
+</div>
+<script>
+
+    //jQuery time
+    var current_fs, next_fs, previous_fs; //fieldsets
+    var left, opacity, scale; //fieldset properties which we will animate
+    var animating; //flag to prevent quick multi-click glitches
+
+    $(".next").click(function(){
+        if(animating) return false;
+        animating = true;
+
+        current_fs = $(this).parent();
+        next_fs = $(this).parent().next();
+
+        //activate next step on progressbar using the index of next_fs
+        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass
+("active");
+
+        //show the next fieldset
+        next_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now, mx) {
+                //as the opacity of current_fs reduces to 0 - stored in "now"
+                //1. scale current_fs down to 80%
+                scale = 1 - (1 - now) * 0.2;
+                //2. bring next_fs from the right(50%)
+                left = (now * 50)+"%";
+                //3. increase opacity of next_fs to 1 as it moves in
+                opacity = 1 - now;
+                current_fs.css({
+            'transform': 'scale('+scale+')',
+            'position': 'absolute'
+          });
+                next_fs.css({'left': left, 'opacity': opacity});
+            },
+            duration: 800,
+            complete: function(){
+                current_fs.hide();
+                animating = false;
+            },
+            //this comes from the custom easing plugin
+            easing: 'easeInOutBack'
+        });
+    });
+
+    $(".previous").click(function(){
+        if(animating) return false;
+        animating = true;
+
+        current_fs = $(this).parent();
+        previous_fs = $(this).parent().prev();
+
+        //de-activate current step on progressbar
+        $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass
+("active");
+
+        //show the previous fieldset
+        previous_fs.show();
+        //hide the current fieldset with style
+        current_fs.animate({opacity: 0}, {
+            step: function(now, mx) {
+                //as the opacity of current_fs reduces to 0 - stored in "now"
+                //1. scale previous_fs from 80% to 100%
+                scale = 0.8 + (1 - now) * 0.2;
+                //2. take current_fs to the right(50%) - from 0%
+                left = ((1-now) * 50)+"%";
+                //3. increase opacity of previous_fs to 1 as it moves in
+                opacity = 1 - now;
+                current_fs.css({'left': left});
+                previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
+            },
+            duration: 800,
+            complete: function(){
+                current_fs.hide();
+                animating = false;
+            },
+            //this comes from the custom easing plugin
+            easing: 'easeInOutBack'
+        });
+    });
+
+</script>
+
+</body>
+</html>
